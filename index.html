@@ -1,34 +1,358 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Creative Portfolio Hub</title>
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <h1>Creative Portfolio Hub</h1>
-      <p>This space hosts private portfolio pages. Each portfolio is only accessible via its unique link.</p>
-    </div>
-  </header>
+  <title>Abdulahi Adnan Mohammed – Portfolio</title>
+  <link rel="stylesheet" href="../css/styles.css" />
 
-  <main class="container">
+  <!-- Light theme + premium overrides just for this page -->
+  <style>
+    /* --------- Light background + base text --------- */
+    body {
+      background: linear-gradient(180deg, #f7f8ff 0%, #ffffff 45%, #f5faf4 100%);
+      color: #1f2230;
+    }
+
+    .site-header {
+      background: #ffffff;
+      border-bottom: 1px solid #e1e4f0;
+    }
+
+    .site-header h1 {
+      color: #181b28;
+    }
+
+    .site-header p {
+      color: #6b7085;
+    }
+
+    .hero-tagline,
+    .section p {
+      color: #4f5468;
+    }
+
+    /* --------- Premium look for hero + badges --------- */
+    .hero-subtitle {
+      color: #5c8c2a;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+    }
+
+    .hero-title {
+      letter-spacing: 0.01em;
+    }
+
+    .hero-badges {
+      gap: 0.5rem;
+    }
+
+    .badge {
+      background: #f7ffe9;
+      color: #3b4b25;
+      border-color: #c6e4a8;
+      font-weight: 600;
+    }
+
+    /* --------- Placeholders & cards --------- */
+    .profile-photo-placeholder {
+      background: #ffffff;
+      border-color: #cdd5f0;
+      color: #7a7f95;
+      box-shadow: 0 10px 25px rgba(15, 74, 19, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .work-card {
+      background: #ffffff;
+      border-color: #8cbf5c;
+      color: #3f4556;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+      line-height: 1.45;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      cursor: default;
+    }
+
+    .work-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.06);
+      border-color: #5c8c2a;
+    }
+
+    .site-footer {
+      background: #ffffff;
+      border-top: 1px solid #e1e4f0;
+      color: #7a7f95;
+    }
+
+    /* --------- Minimal animations (load-in fade up) --------- */
+    @keyframes fadeUpSoft {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero,
+    .section {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUpSoft 0.7s ease-out forwards;
+    }
+
+    .hero {
+      animation-delay: 0.05s;
+    }
+
+    .section:nth-of-type(1) { animation-delay: 0.15s; }
+    .section:nth-of-type(2) { animation-delay: 0.25s; }
+    .section:nth-of-type(3) { animation-delay: 0.35s; }
+    .section:nth-of-type(4) { animation-delay: 0.45s; }
+    .section:nth-of-type(5) { animation-delay: 0.55s; }
+    .section:nth-of-type(6) { animation-delay: 0.65s; }
+    .section:nth-of-type(7) { animation-delay: 0.75s; }
+
+    /* Small polish on lists */
+    .section ul {
+      padding-left: 1.1rem;
+      margin-top: 0.4rem;
+      margin-bottom: 0.8rem;
+      color: #4a5063;
+    }
+    .section li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* --------- Image placeholders --------- */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .image-placeholder {
+      position: relative;
+      border: 1px dashed #cdd5f0;
+      border-radius: 1rem;
+      background: #f9fbff;
+      padding: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 180px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6b7085;
+      overflow: hidden;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      cursor: pointer;
+    }
+
+    .image-placeholder:hover {
+      transform: translateY(-3px);
+      border-color: #8cbf5c;
+      box-shadow: 0 10px 22px rgba(15, 74, 19, 0.08);
+    }
+
+    .image-caption {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #565b6a;
+    }
+  </style>
+</head>
+<body class="portfolio-page">
+<header class="site-header">
+  <div class="container">
+    <h1>Creative Portfolio Hub</h1>
+  </div>
+</header>
+
+<main class="portfolio-main">
+  <div class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="hero-subtitle">TEXTILE LAB · TEXTILE DESIGN</div>
+        <h2 class="hero-title">Abdulahi Adnan Mohammed</h2>
+        <p class="hero-tagline">
+          Textile designer combining fabric manipulation, texture and colour development into expressive, contemporary fabric stories.
+        </p>
+        <div class="hero-badges">
+          <span class="badge">TEXTILES</span>
+          <span class="badge">SURFACE DESIGN</span>
+          <span class="badge">FABRIC MANIPULATION</span>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <div class="profile-photo-placeholder">
+          <img
+            src="../assets/img/ADNAN.jpeg"
+            alt="Portrait of Abdulahi Adnan Mohammed"
+            style="width:100%; height:auto; border-radius:0.75rem; object-fit:cover;"
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- INTRODUCTION -->
     <section class="section">
-      <h2>Private Access</h2>
+      <h2>Introduction</h2>
+      <p>My name is Abdulahi Adnan Mohammed.</p>
       <p>
-        If you received a personal link to view a portfolio, please use that link directly.
-        There is no public list of participants on this site.
+        I work in textile design, combining fabric manipulation, texture, and colour development to create fabrics that can be used
+        for garments, accessories, and interior pieces.
+      </p>
+      <p>
+        I am interested in learning new ways to integrate contemporary methods into my textile practice while still reflecting
+        my own cultural references and everyday stories.
       </p>
     </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2025 Creative Portfolio Hub</p>
-    </div>
-  </footer>
+    <!-- PRACTICE AND FOCUS AREAS -->
+    <section class="section">
+      <h2>Practice and Focus Areas</h2>
+      <p>In my current practice, I enjoy:</p>
+      <ul>
+        <li>Developing fabric samples through pleating, gathering, and other manipulation methods.</li>
+        <li>Experimenting with layered colour on cloth using simple printing and painting techniques.</li>
+        <li>Exploring how texture can change the mood and function of a fabric.</li>
+        <li>Translating hand-drawn ideas into repeatable surface patterns.</li>
+      </ul>
+      <p>
+        My goal is to move from individual experiments to a more organised portfolio of collections that can be used by fashion
+        designers, product makers, and interior decorators.
+      </p>
+
+      <!-- IMAGE PLACEHOLDERS: Practice details -->
+      <div class="image-grid">
+        <div class="image-placeholder">
+          <img
+            src="../assets/img/AD1.jpg"
+            alt="Abdulahi working in his textile workspace with fabrics and tools"
+            style="width:100%; height:auto; border-radius:0.75rem; object-fit:cover;"
+          >
+        </div>
+        <div class="image-placeholder">
+          <img
+            src="../assets/img/AD2.jpg"
+            alt="Close-up of Abdulahi manipulating fabric with pleats and stitching"
+            style="width:100%; height:auto; border-radius:0.75rem; object-fit:cover;"
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS AND TOOLS -->
+    <section class="section">
+      <h2>Skills and Tools</h2>
+      <p>
+        I am steadily building a foundation in textile techniques and tools, including:
+      </p>
+      <ul>
+        <li>Basic fabric manipulation (pleats, tucks, gathers, appliqué).</li>
+        <li>Simple printing approaches such as stamping, stencilling, and brushwork on fabric.</li>
+        <li>Colour testing on cotton and blended fabrics.</li>
+        <li>Basic use of sewing machines for finishing edges and joining panels.</li>
+        <li>Organising samples in a clear way for presentation and review.</li>
+      </ul>
+      <p>
+        As I grow, I want to combine these skills with digital embroidery and more advanced surface design so that my textiles can
+        move from single samples into strong, connected collections.
+      </p>
+    </section>
+
+    <!-- PORTFOLIO HIGHLIGHTS -->
+    <section class="section">
+      <h2>Portfolio Highlights</h2>
+      <p>
+        Below are example directions of work that represent how I like to approach textile projects.
+      </p>
+
+      <div class="work-grid">
+        <div class="work-card">
+          <strong>Sample Collection A – Mixed Print Panels</strong><br>
+          Brightly printed cotton fabrics laid out as panels, testing how different colours, scales and motifs can sit together on one
+          surface for garments, accessories or table pieces.
+          <div class="image-placeholder" style="margin-top:0.75rem;">
+            <img
+              src="../assets/img/AD4.jpg"
+              alt="Selection of brightly printed fabrics arranged as panels"
+              style="width:100%; height:auto; border-radius:0.75rem; object-fit:cover;"
+            >
+          </div>
+        </div>
+
+        <div class="work-card">
+          <strong>Sample Collection B – Hand-Printed Rose Motifs</strong><br>
+          Hand-printed rose motifs created with a block on plain cloth, focusing on spacing, repeat rhythm and even colour across the
+          surface for future yardage or placement prints.
+          <div class="image-placeholder" style="margin-top:0.75rem;">
+            <img
+              src="../assets/img/AD4.jpg"
+              alt="Hand block-printing rose motifs on white fabric"
+              style="width:100%; height:auto; border-radius:0.75rem; object-fit:cover;"
+            >
+          </div>
+        </div>
+
+        <div class="work-card">
+          <strong>Sample Collection C – Block-Printed Pattern Length</strong><br>
+          A continuous length of fabric printed with a repeating block, practising alignment, pressure control and building a strong,
+          all-over pattern that can be cut into garments or home pieces.
+          <div class="image-placeholder" style="margin-top:0.75rem;">
+            <img
+              src="../assets/img/AD6.jpg"
+              alt="Continuous fabric being block-printed with a repeating motif"
+              style="width:100%; height:auto; border-radius:0.75rem; object-fit:cover;"
+            >
+          </div>
+        </div>
+      </div>
+
+      <p>
+        These sample directions can be expanded into full collections with proper documentation, naming, and technical notes.
+      </p>
+    </section>
+
+    <!-- FUTURE DIRECTION -->
+    <section class="section">
+      <h2>Future Direction</h2>
+      <p>
+        Going forward, I want to organise my textile work into small, themed collections and present them in a professional way.
+        I also want to collaborate with fashion designers and product makers who are looking for original fabrics that combine
+        texture, colour, and story.
+      </p>
+
+      <div class="image-placeholder" style="margin-top:1rem;">
+        <img
+          src="../assets/img/AD7.jpeg"
+          alt="Moodboard showing Abdulahi's future textile direction"
+          style="width:100%; height:auto; border-radius:0.75rem; object-fit:cover;"
+        >
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2025 Creative Portfolio Hub</p>
+  </div>
+</footer>
 </body>
 </html>
